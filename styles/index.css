@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  background-image: url("../assets/table.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#output-div img {
+  display: block;
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.header {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+#container {
+  background-color: rgba(248, 192, 255, 0.9);
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#input-field {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 10px 0;
+  padding: 5px 9px;
+  width: 100%;
+  max-width: 300px;
+}
+
+#game-buttons {
+  display: none; 
+}
+
+#submit-button, #hit-button, #stand-button {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 10px 0;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+#output-div {
+  background-color: rgba(211, 211, 211, 0.7);
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card { 
+  width: 70px; 
+  height: auto; 
+  margin: 5px; 
+}
+
+.hand { 
+  display: flex; 
+  flex-wrap: wrap;
+  align-items: center; 
+}
+
+.hand-value { 
+  margin-left: 10px; 
+}
+
+.tenor-gif-embed {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* increase header font size on wider screens */
+@media screen and (min-width: 600px) {
+  .header {
+    font-size: 2rem;
+  }
+
+  #input-field, #submit-button {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .card {
+    width: 100px;
+  }
+}
+
+/* Reset Button */
+.reset-button {
+  font-size: 16px;
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #d9534f; /* Red color for distinction */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #c9302c;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #333;
+  padding: 10px;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  background-color: #555;
+  color: #f1f1f1;
+}

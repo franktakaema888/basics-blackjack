@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+  
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  background-image: url("../assets/table.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#container {
+  background-color: rgba(248, 192, 255, 0.9);
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #333;
+  padding: 10px;
+}
+  
+.navbar .nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  background-color: #555;
+  color: #f1f1f1;
+}

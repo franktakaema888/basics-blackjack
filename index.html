@@ -1,184 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- ... (keep all the existing head content) ... -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Jack</title>
 
-    <!-- CSS -->
-    <style>
-      * {
-        box-sizing: border-box;
-      }
+  <link rel="stylesheet" href="./styles/index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 
-      body {
-        font-family: 'Open Sans', sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: white;
-        color: black;
-        background-image: url("card-images/table.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
+<body>
+  <!-- NAV Bar -->
+  <nav class="navbar">
+    <a href="login.html" class="nav-link">Admin</a>
+  </nav>
 
-      #output-div img {
-        display: block;
-        max-width: 100%;
-        max-height: 200px;
-      }
+  <div id="container">
+    <h1 class="header">
+      <div class="tenor-gif-embed" data-postid="12130977" data-share-method="host" data-aspect-ratio="2" data-width="100%">
+        <a href="https://tenor.com/view/mel-gibson-stupid-looking-shocked-gif-12130977">Mel Gibson Stupid GIF</a>from<a href="https://tenor.com/search/mel+gibson-gifs">Mel Gibson GIFs</a>
+      </div> 
+      <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </h1>
+    <h1 class="header">♣️ Blackjack ♠️</h1>
+    <p><strong>Current Balance: </strong>$ <span id="balance-display">Loading...</span></p> <!-- balance display -->
+    <p>Welcome to Beat That! Click submit to start the game.</p>
+    <p>The goal is to get closer to 21 than the dealer without going over.</p>
 
-      .header {
-        text-align: center;
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-      }
-
-      #container {
-        background-color: rgba(248, 192, 255, 0.9);
-        margin: 20px auto;
-        max-width: 800px;
-        padding: 20px;
-        border-radius: 10px;
-      }
-
-      #input-field {
-        font-size: 16px;
-        line-height: 24px;
-        margin: 0 0 10px 0;
-        padding: 5px 9px;
-        width: 100%;
-        max-width: 300px;
-      }
-
-      #game-buttons {
-        display: none; 
-      }
-
-      #submit-button, #hit-button, #stand-button {
-        font-size: 16px;
-        line-height: 24px;
-        margin: 0 0 10px 0;
-        padding: 5px 15px;
-        cursor: pointer;
-      }
-
-      #output-div {
-        background-color: rgba(211, 211, 211, 0.7);
-        margin: 20px auto;
-        padding: 20px;
-        width: 100%;
-        border-radius: 5px;
-      }
-
-      .card { 
-        width: 70px; 
-        height: auto; 
-        margin: 5px; 
-      }
-
-      .hand { 
-        display: flex; 
-        flex-wrap: wrap;
-        align-items: center; 
-      }
-
-      .hand-value { 
-        margin-left: 10px; 
-      }
-
-      .tenor-gif-embed {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        margin: 0 auto;
-      }
-
-      /* increase header font size on wider screens */
-      @media screen and (min-width: 600px) {
-        .header {
-          font-size: 2rem;
-        }
-
-        #input-field, #submit-button {
-          font-size: 18px;
-          line-height: 28px;
-        }
-
-        .card {
-          width: 100px;
-        }
-      }
-    </style>
-
-  </head>
-
-  <body>
-    <div id="container">
-      <h1 class="header">
-        <div class="tenor-gif-embed" data-postid="12130977" data-share-method="host" data-aspect-ratio="2" data-width="100%">
-          <a href="https://tenor.com/view/mel-gibson-stupid-looking-shocked-gif-12130977">Mel Gibson Stupid GIF</a>from<a href="https://tenor.com/search/mel+gibson-gifs">Mel Gibson GIFs</a>
-        </div> 
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-      </h1>
-      <h1 class="header">♣️ Blackjack ♠️</h1>
-      <p>Hello! Welcome to Beat That! Click submit to start the game.</p>
-      <p>Players receive all cards face up and the dealer's first card is face up and the second is face down.</p>
-      <p>The object of the game is to get closer to 21 than the dealer without going over 21</p>
-      <p>Input:</p>
-      <input id="input-field" />
-      <br />
+    <form>
+      <p><strong>Bet:</strong></p>
+      <input id="bet-amount" />
       <button id="submit-button">Submit</button>
-      <div id="game-buttons">
-        <button id="hit-button">Hit</button>
-        <button id="stand-button">Stand</button>
-      </div>
-      <p>Output:</p>
-      <div id="output-div">Press the Submit Button to draw the cards and start game</div>
+    </form>
+
+    <div id="game-buttons">
+      <button id="hit-button">Hit</button>
+      <button id="stand-button">Stand</button>
     </div>
-    <!-- Import program logic -->
-    <script src="script.js"></script>
-    <!-- Define button click functionality -->
-    <script>
-      var gameButtons = document.querySelector("#game-buttons");
-      var output = document.querySelector("#output-div");
-      var button = document.querySelector("#submit-button");
-      var hitButton = document.querySelector("#hit-button");
-      var standButton = document.querySelector("#stand-button");
 
-      function updateButtonVisibility(gameOver) {
-        if (gameOver) {
-          gameButtons.style.display = 'none';
-          button.style.display = 'inline-block';
-          button.textContent = 'New Game';
-        } else {
-          gameButtons.style.display = 'block';
-          button.style.display = 'none';
-        }
-      }
+    <button id="reset-button" class="reset-button">Reset Game</button> <!-- Reset Game Button -->
 
-      button.addEventListener("click", function () {
+    <p><strong>Output:</strong></p>
+    <div id="output-div">Press the Submit Button to draw the cards and start game</div>
+  </div>
 
-        // Display result in output element
-        var result = main('start');
-        output.innerHTML = result.output;
-
-        // Show hit and stand button once submit button is pressed
-        updateButtonVisibility(result.gameOver);
-      });
-
-      hitButton.addEventListener("click", function (){
-        console.log("Hit Button Pressed");
-        var result = main('hit');
-        output.innerHTML = result.output;
-        updateButtonVisibility(result.gameOver);
-      });
-      
-      standButton.addEventListener("click", function () {
-        console.log("Stand Button Pressed");
-        var result = main('stand');
-        output.innerHTML = result.output;
-        updateButtonVisibility(result.gameOver);
-      });
-    </script>
-  </body>
+  <!-- JavaScript Files -->
+  <script src="./js/data.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/button.js"></script>
+</body>
 </html>
